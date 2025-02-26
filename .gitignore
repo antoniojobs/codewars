@@ -1,0 +1,56 @@
+Claro! Aqui está a versão do arquivo `.gitignore` incluindo arquivos de configuração do Visual Studio Code:
+
+```gitignore
+# Ignorar arquivos gerados pelo Maven
+/target/
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos de configuração do IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+
+# Ignorar arquivos de configuração do Eclipse
+.project
+.classpath
+.settings/
+
+# Ignorar arquivos de configuração do NetBeans
+/nbproject/private/
+/nbbuild/
+dist/
+nbdist/
+build/
+nbactions.xml
+nb-configuration.xml
+
+# Ignorar arquivos de configuração do Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Ignorar arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos de configuração específicos do sistema
+*.swp
+*~
+
+# Ignorar dependências baixadas pelo Maven
+.m2/
+
+# Ignorar JARs e WARs gerados
+*.jar
+*.war
+
+# Ignorar arquivos binários e compilados
+*.class
+*.dll
+*.exe
+*.o
+*.so
+```
+
+Esse arquivo `.gitignore` deve abranger as necessidades de um projeto Java com Maven, bem como arquivos de configuração do IntelliJ IDEA, Eclipse, NetBeans e Visual Studio Code. Se precisar de mais alguma coisa, é só me avisar! 😊
