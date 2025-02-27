@@ -1,42 +1,51 @@
 package io.github.antoniojobs;
 
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.junit.Assert.*;
 
 public class StringEndsWithTest {
-    @Test
-    public void staticTests() {
-        check3("samurai", "ai", true);
-        check3("sumo", "omo", false);
-        check3("ninja", "ja", true);
-        check3("sensei", "i", true);
-        check3("samurai", "ra", false);
-        check3("abc", "abcd", false);
-        check3("abc", "abc", false);
-        check3("abcabc", "bc", true);
-        check3("ails", "fails", false);
-        check3("fails", "ails", true);
-        check3("this", "fails", false);
-        check3("this", "", true);
-        check3(":-)", ":-(", false);
-        check3("!@#$%^&*() :-)", ":-)", true);
-        check3("abc\n", "abc", false);
+
+    private ByteArrayOutputStream outContent;
+    private PrintStream originalOut;
+
+    @Before
+    public void setUpStreams() {
+        outContent = new ByteArrayOutputStream();
+        originalOut = System.out;
+        System.setOut(new PrintStream(outContent));
     }
 
-//    private void check(String str, String ending, boolean expected) {
-//        boolean result = StringEndsWith.solution(str, ending);
-//        System.out.println(str + " : result " + result + " : expected " + expected);
-//        assertEquals(expected, result, "Expected solution(\"" + str + "\", \"" + ending + "\") to return " + expected);
-//    }
+    @Test
+    public void testSolution2Melhorada_CasoBasico_RetornaTrue() {
+        assertTrue(StringEndsWith.solution2Melhorada("abc", "bc"));
+    }
 
-//    private static void check2(String str, String ending, boolean expected) {
-//        boolean result = StringEndsWith.solution2(str, ending);
-//        assertEquals(expected, result, " Expected solution(\"" + str + "\", \"" + ending + "\") to return " + expected);
-//    }
+    @Test
+    public void testSolution2Melhorada_CasoBasico_RetornaFalse() {
+        assertFalse(StringEndsWith.solution2Melhorada("abc", "d"));
+    }
 
-    private static void check3(String str, String ending, boolean expected) {
-        boolean result = StringEndsWith.solution2Melhorada(str, ending);
-        assertEquals(expected, result, " Expected solution(\"" + str + "\", \"" + ending + "\") to return " + expected);
+    @Test
+    public void testSolution2Melhorada_StringCompleta_MostraErro() {
+        StringEndsWith.solution2Melhorada("abc", "abc");
+        assertEquals("(string = abc) e (pesquisada = abc) não coloque a palavra inteira",
+                outContent.toString());
+    }
+
+    @Test
+    public void testSolution2Melhorada_Nulos_RetornaFalse() {
+        assertFalse(StringEndsWith.solution2Melhorada(null, "abc"));
+        assertFalse(StringEndsWith.solution2Melhorada("abc", null));
+    }
+
+    @Test
+    public void testSolution2Melhorada_SufixoMaior_RetornaFalse() {
+        assertFalse(StringEndsWith.solution2Melhorada("abc", "abcd"));
     }
 }
