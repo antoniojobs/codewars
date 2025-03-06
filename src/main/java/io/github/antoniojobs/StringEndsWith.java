@@ -106,7 +106,7 @@ public class StringEndsWith {
         // Verifica se o sufixo é igual à string completa
         if (ending.equals(str)) {
             System.out.println("(string = "+str +") e (pesquisada = "+ending +") "+ERRO_PALAVRA_COMPLETA);
-            return false;
+            return true;
         }
 
         //verifica se a substriga pesquisada é maior que a string
